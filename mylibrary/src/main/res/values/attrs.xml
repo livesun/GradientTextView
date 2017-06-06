@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="GradienTextView">
+        
+        <attr name="original_color" format="color"/>
+        <attr name="change_color" format="color"/>
+
+    </declare-styleable>
+    
+</resources>
