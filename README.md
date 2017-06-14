@@ -24,6 +24,47 @@
             compile 'com.github.livesun:GradientTextView:v1.0'
 	}
 ```
+* Step 3 xml布局
+
+```
+<gradient.mylibrary.GradienTextView
+        android:id="@+id/gradienTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+        app:originalCololr="@color/colorPrimary"
+        app:change_color="@color/colorAccent"
+        android:textSize="15sp"
+        />
+```
+* Step 4 代码调用
+```
+//简单使用
+
+ GradienTextView gradienTextView = (GradienTextView) findViewById(R.id.gradienTextView);
+ gradienTextView.start(Orientation.LEFT_TO_RIGHT,1000);
+ 
+ 
+ //也可以自定义
+ 
+  gradienTextView.setOrientation(Orientation.LEFT_TO_RIGHT);
+        ValueAnimator animator = ValueAnimator.ofFloat(new float[]{0.0F, 1.0F});
+        animator.setDuration(2000);
+        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            public void onAnimationUpdate(ValueAnimator animation) {
+                float value = ((Float)animation.getAnimatedValue()).floatValue();
+
+                gradienTextView.setCurrentProgress(value);
+            }
+        });
+        animator.start();
+        
+        
+    //也可以静态展示
+    
+     gradienTextView.start(Orientation.LEFT_TO_RIGHT,1000);
+     gradienTextView.setCurrentProgress(0.5f);
+```
+
 
 ##有问题反馈
 在使用中有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流
